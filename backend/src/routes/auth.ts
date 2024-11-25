@@ -2,9 +2,8 @@ import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { Hono } from "hono";
 import { sign } from "hono/jwt";
-
-// Utility functions for password hashing and verification
-import { hashPassword, verifyPassword } from "../utils/passwordUtils"; // Adjust the import path as needed
+import { hashPassword, verifyPassword } from "../utils/passwordUtils";
+import { signUpInput, signinInput } from "@kanad_shee/scriptlab-common";
 
 export const authRouter = new Hono<{
   Bindings: {
@@ -21,6 +20,18 @@ authRouter.post("/signup", async (c) => {
     }).$extends(withAccelerate());
 
     const body = await c.req.json();
+
+    const { success } = signUpInput.safeParse(body);
+
+    if (!success) {
+      return c.json(
+        {
+          message: "Inputs are not correct",
+          success: false,
+        },
+        411
+      );
+    }
 
     // Validate the fields
     if (!body.email || !body.password) {
@@ -78,6 +89,18 @@ authRouter.post("/signin", async (c) => {
     }).$extends(withAccelerate());
 
     const body = await c.req.json();
+
+    const { success } = signinInput.safeParse(body);
+
+    if (!success) {
+      return c.json(
+        {
+          message: "Inputs are not correct",
+          success: false,
+        },
+        411
+      );
+    }
 
     // Check if user exists
     const user = await prisma.user.findUnique({

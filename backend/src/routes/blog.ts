@@ -2,6 +2,8 @@ import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { Hono } from "hono";
 import { verify } from "hono/jwt";
+import { createBlogInput, updateBlogInput } from "@kanad_shee/scriptlab-common";
+
 
 export const blogRouter = new Hono<{
   Bindings: {
@@ -41,6 +43,18 @@ blogRouter.use("/*", async (c, next) => {
 blogRouter.post("/createBlog", async (c) => {
   try {
     const body = await c.req.json();
+
+    const { success } = createBlogInput.safeParse(body);
+
+    if (!success) {
+      return c.json(
+        {
+          message: "Inputs are not correct",
+          success: false,
+        },
+        411
+      );
+    }
 
     const authorId = c.get("userId");
 
@@ -137,6 +151,18 @@ blogRouter.get("/blog-insider", async (c) => {
 blogRouter.put("/modify-blog", async (c) => {
   try {
     const body = await c.req.json();
+
+    const { success } = updateBlogInput.safeParse(body);
+
+    if (!success) {
+      return c.json(
+        {
+          message: "Inputs are not correct",
+          success: false,
+        },
+        411
+      );
+    }
 
     const authorId = c.get("userId");
 
