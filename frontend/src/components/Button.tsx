@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FormEvent } from "react";
 
@@ -12,15 +11,12 @@ type Props = {
 };
 
 const Button = ({
-  btnAction,
   btnText,
   type = "submit",
   forgetPassword = false,
   onSubmit,
   onClick,
 }: Props) => {
-  const navigate = useNavigate();
-
   return (
     <div className="w-11/12 mx-auto md:w-4/5">
       <button
