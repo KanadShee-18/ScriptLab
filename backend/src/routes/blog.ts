@@ -4,7 +4,6 @@ import { Hono } from "hono";
 import { verify } from "hono/jwt";
 import { createBlogInput, updateBlogInput } from "@kanad_shee/scriptlab-common";
 
-
 export const blogRouter = new Hono<{
   Bindings: {
     DATABASE_URL: string;
@@ -103,7 +102,8 @@ blogRouter.post("/createBlog", async (c) => {
 // get a specific blog by its id
 blogRouter.get("/blog-insider", async (c) => {
   try {
-    const body = await c.req.json();
+    // const body = await c.req.json();
+    const blogId = c.req.param("id");
 
     const prisma = new PrismaClient({
       datasourceUrl: c.env.DATABASE_URL,
@@ -111,7 +111,7 @@ blogRouter.get("/blog-insider", async (c) => {
 
     const blog = await prisma.post.findFirst({
       where: {
-        id: body.id,
+        id: blogId,
       },
     });
 
@@ -302,7 +302,18 @@ blogRouter.get("/blogs-overview", async (c) => {
       datasourceUrl: c.env.DATABASE_URL,
     }).$extends(withAccelerate());
 
-    const blogs = await prisma.post.findMany();
+    const blogs = await prisma.post.findMany({
+      select: {
+        content: true,
+        title: true,
+        id: true,
+        author: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
 
     return c.json(
       {

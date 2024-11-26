@@ -1,9 +1,57 @@
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Signup from "./pages/Signup";
+import Signin from "./pages/Signin";
+import Blog from "./pages/Blog";
+import OpenRoute from "./components/authenticate/OpenRoute";
+import PrivateRoute from "./components/authenticate/PrivateRoute";
+import BlogPost from "./components/blogspot/BlogPost";
 
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold font-edu underline">Hello world!</h1>
+      <div className="font-inter">
+        <Routes>
+          <Route
+            path="/"
+            element={<div> Home page of script lab to be made later</div>}
+          />
+
+          <Route
+            path="/signup"
+            element={
+              <OpenRoute>
+                <Signup />
+              </OpenRoute>
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <OpenRoute>
+                <Signin />
+              </OpenRoute>
+            }
+          />
+
+          <Route
+            path="/blog"
+            element={
+              <PrivateRoute>
+                <Blog />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/blog/blog-insider/:id"
+            element={
+              <PrivateRoute>
+                <BlogPost />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </div>
     </>
   );
 }

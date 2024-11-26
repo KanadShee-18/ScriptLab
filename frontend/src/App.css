@@ -1,42 +1,53 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* .signUpBG{
+    background-image: radial-gradient(#bbbbd7 1px, transparent 0.2px);
+background-size: 12px 12px;
+background-color: #f5fcff;
+} 
+ */
+
+/* .spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, #464654 94%, #0000) top/6.4px 6.4px
+      no-repeat,
+    conic-gradient(#0000 30%, #464654);
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    #0000 calc(100% - 6.4px),
+    #000 0
+  );
+  animation: spinner-c7wet2 0.8s infinite linear;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes spinner-c7wet2 {
+  100% {
+    transform: rotate(1turn);
   }
-  to {
-    transform: rotate(360deg);
+} */
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, #334155 94%, transparent) top/6.4px
+      6.4px no-repeat,
+    conic-gradient(transparent 30%, #334155);
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 6.4px),
+    black 0
+  ); /* Standard property */
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 6.4px),
+    black 0
+  ); /* Prefixed for WebKit browsers */
+  animation: spinner-c7wet2 0.8s infinite linear;
+}
+
+@keyframes spinner-c7wet2 {
+  100% {
+    transform: rotate(1turn);
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

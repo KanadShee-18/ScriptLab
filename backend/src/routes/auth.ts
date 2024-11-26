@@ -54,9 +54,12 @@ authRouter.post("/signup", async (c) => {
         password: hashedPassword, // Store the hashed password
         name: body.name || undefined, // Include name if provided
       },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+      },
     });
-
-    user.password = "";
 
     // Create JWT token
     const token = await sign({ id: user.id }, c.env.JWT_SECRET);
