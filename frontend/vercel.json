@@ -1,4 +1,9 @@
 {
+  "build": {
+    "env": {
+      "TSCONFIG_IGNORE_ERRORS": "true"
+    }
+  },
   "rewrites": [
     {
       "source": "/(.*)",

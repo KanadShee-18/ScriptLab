@@ -1,4 +1,4 @@
-import React from "react";
+
 import { AppBar } from "./AppBar";
 import { Avatar } from "./BlogCard";
 
