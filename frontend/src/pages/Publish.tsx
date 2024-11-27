@@ -5,22 +5,19 @@ import { useNavigate } from "react-router-dom";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-
 interface PublishInputs {
   title: string;
   content: string;
 }
 
 export const Publish = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const [loading, setLoading] = useState<boolean>(false);
   const [publishInputs, setPublishInputs] = useState<PublishInputs>({
     title: "",
     content: "",
   });
-
-
 
   const handleOnChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -37,7 +34,7 @@ export const Publish = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        `${BASE_URL}/blog/createBlog`,
+        `${BASE_URL}/api/v1/blog/createBlog`,
         publishInputs,
         {
           headers: {
@@ -45,23 +42,22 @@ export const Publish = () => {
           },
         }
       );
-     
-      if(response?.data?.success){
+
+      if (response?.data?.success) {
         navigate("/blog");
       }
     } catch (error: any) {
-     
-      alert(`${error.response.data.message}`)
+      alert(`${error.response.data.message}`);
     }
     setLoading(false);
   };
 
   if (loading) {
     return (
-        <div>
-            <Shimmer/>
-        </div>
-    )
+      <div>
+        <Shimmer />
+      </div>
+    );
   }
 
   return (
@@ -98,8 +94,9 @@ export const Publish = () => {
           </div>
 
           <button
-          onClick={() => handleOnClick()}
-          className="w-[200px] py-2 mx-auto tracking-wide text-center bg-gray-800 rounded-md text-slate-50 hover:bg-gray-700">
+            onClick={() => handleOnClick()}
+            className="w-[200px] py-2 mx-auto tracking-wide text-center bg-gray-800 rounded-md text-slate-50 hover:bg-gray-700"
+          >
             Publish Blog
           </button>
         </div>
@@ -109,17 +106,17 @@ export const Publish = () => {
 };
 
 const Shimmer = () => (
-    <div className="flex items-center justify-center w-screen h-screen bg-gray-100">
-      <div className="relative w-11/12 lg:w-3/5 xl:w-1/2 md:w-10/12">
-        <div className="animate-pulse">
-          <div className="w-3/4 h-12 mb-6 bg-gray-300 rounded"></div>
-          <div className="w-1/2 h-10 mb-4 bg-gray-300 rounded"></div>
-          <div className="w-full h-64 mb-6 bg-gray-300 rounded"></div>
-          <div className="w-1/3 h-10 mx-auto bg-gray-300 rounded"></div>
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-2xl font-bold text-gray-700">Publishing...</h1>
-        </div>
+  <div className="flex items-center justify-center w-screen h-screen bg-gray-100">
+    <div className="relative w-11/12 lg:w-3/5 xl:w-1/2 md:w-10/12">
+      <div className="animate-pulse">
+        <div className="w-3/4 h-12 mb-6 bg-gray-300 rounded"></div>
+        <div className="w-1/2 h-10 mb-4 bg-gray-300 rounded"></div>
+        <div className="w-full h-64 mb-6 bg-gray-300 rounded"></div>
+        <div className="w-1/3 h-10 mx-auto bg-gray-300 rounded"></div>
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <h1 className="text-2xl font-bold text-gray-700">Publishing...</h1>
       </div>
     </div>
-  );
+  </div>
+);

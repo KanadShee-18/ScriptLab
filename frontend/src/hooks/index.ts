@@ -16,7 +16,7 @@ export const blogsOverview = async () => {
   const token = localStorage.getItem("token");
 
   try {
-    const response = await axios.get(`${BASE_URL}/blog/blogs-overview`, {
+    const response = await axios.get(`${BASE_URL}/api/v1/blog/blogs-overview`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -37,7 +37,7 @@ export const useSingleBlog = ({ id }: { id?: string }) => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`${BASE_URL}/blog/blog-insider/${id}`, {
+      .get(`${BASE_URL}/api/v1/blog/blog-insider/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -58,14 +58,17 @@ export const deleteBlog = async ({ id }: { id: string }) => {
   const token = localStorage.getItem("token");
 
   try {
-    const response = await axios.delete(`${BASE_URL}/blog/destroy-blog`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      data: {
-        blogId: id,
-      },
-    });
+    const response = await axios.delete(
+      `${BASE_URL}/api/v1/blog/destroy-blog`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data: {
+          blogId: id,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     throw error;

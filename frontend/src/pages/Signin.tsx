@@ -22,7 +22,10 @@ const Signin = () => {
   const sendSignInRequest = async () => {
     try {
       setLoading(true);
-      const response = await axios.post(`${BASE_URL}/user/signin`, postInputs);
+      const response = await axios.post(
+        `${BASE_URL}/api/v1/user/signin`,
+        postInputs
+      );
       const { jwt, userId, userName } = response?.data;
 
       localStorage.setItem("token", jwt);
