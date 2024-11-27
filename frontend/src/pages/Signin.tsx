@@ -25,14 +25,15 @@ const Signin = () => {
         `${import.meta.env.VITE_BASE_URL}/user/signin`,
         postInputs
       );
-      const {jwt, userId, userName} = response?.data;
-      
+      const { jwt, userId, userName } = response?.data;
+
       localStorage.setItem("token", jwt);
       localStorage.setItem("userId", userId);
       localStorage.setItem("userName", userName);
       setLoading(false);
       navigate("/blog");
     } catch (error: any) {
+      console.log("Signin error: ", error);
 
       setErrMsg(error.response.data.message);
     }
