@@ -25,14 +25,13 @@ const Signup = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/user/signup`,
+        `${import.meta.env.VITE_BASE_URL}/api/v1/user/signup`,
         postInputs
       );
       const jwt = response?.data?.jwt;
       localStorage.setItem("token", jwt);
       navigate("/blog");
     } catch (error: any) {
-     
       setErrMsg(error.response.data.message);
     }
     setLoading(false);

@@ -10,39 +10,14 @@ interface Blog {
   };
 }
 
-// export const blogsOverview = () => {
-//   const [loading, setLoading] = useState<boolean>(false);
-//   const [blogs, setBlogs] = useState([]);
-//   const token = localStorage.getItem("token");
 
-//   useEffect(() => {
-//     setLoading(true);
-//     axios
-//       .get(`${import.meta.env.VITE_BASE_URL}/blog/blogs-overview`, {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       })
-//       .then((res) => {
-//         console.log("Blogs coming: ", res);
-
-//         setBlogs(res.data?.data?.blogs);
-//         setLoading(false);
-//       });
-//   }, []);
-
-//   return {
-//     blogs,
-//     loading,
-//   };
-// };
 
 export const blogsOverview = async () => {
   const token = localStorage.getItem("token");
 
   try {
     const response = await axios.get(
-      `${import.meta.env.VITE_BASE_URL}/blog/blogs-overview`,
+      `${import.meta.env.VITE_BASE_URL}/api/v1/blog/blogs-overview`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -66,7 +41,7 @@ export const useSingleBlog = ({ id }: { id?: string }) => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`${import.meta.env.VITE_BASE_URL}/blog/blog-insider/${id}`, {
+      .get(`${import.meta.env.VITE_BASE_URL}/api/v1/blog/blog-insider/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -121,7 +96,7 @@ export const deleteBlog = async ({ id }: { id: string }) => {
 
   try {
     const response = await axios.delete(
-      `${import.meta.env.VITE_BASE_URL}/blog/destroy-blog`,
+      `${import.meta.env.VITE_BASE_URL}/api/v1/blog/destroy-blog`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

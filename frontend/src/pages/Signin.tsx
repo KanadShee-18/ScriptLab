@@ -22,7 +22,7 @@ const Signin = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/user/signin`,
+        `${import.meta.env.VITE_BASE_URL}/api/v1/user/signin`,
         postInputs
       );
       const { jwt, userId, userName } = response?.data;
