@@ -50,7 +50,7 @@ const Signin = () => {
       <HomeNav />
       <div className="grid w-full min-h-screen place-items-center">
         <div className="flex flex-col items-center md:flex-row">
-          <div className="w-full mt-8 md:w-1/2 md:mt-0">
+          <div className="w-full mt-24 md:w-1/2 md:mt-0">
             <Quote
               text={quoteText2}
               authorName="Arianna Huffington"

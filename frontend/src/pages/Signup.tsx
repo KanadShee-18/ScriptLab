@@ -52,7 +52,7 @@ const Signup = () => {
       <HomeNav/>
     <div className="grid w-full h-fit place-items-center">
       <div className="flex flex-col items-center md:flex-row">
-        <div className="grid w-full mt-8 signUpBG md:w-1/2 md:mt-0 place-items-center">
+        <div className="grid w-full mt-28 signUpBG md:w-1/2 md:mt-0 place-items-center">
           <div className="w-full max-w-[400px] md:max-w-[500px]">
             <AuthHeading authHeading="Create an account" />
             <div className="flex gap-x-2">
