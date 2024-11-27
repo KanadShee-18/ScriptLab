@@ -9,6 +9,7 @@ import { SignupInput } from "@kanad_shee/scriptlab-common";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../hooks";
+import { HomeNav } from "./Home";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -47,7 +48,9 @@ const Signup = () => {
   };
 
   return (
-    <div className="grid w-full min-h-screen place-items-center">
+    <div>
+      <HomeNav/>
+    <div className="grid w-full h-fit place-items-center">
       <div className="flex flex-col items-center md:flex-row">
         <div className="grid w-full mt-8 signUpBG md:w-1/2 md:mt-0 place-items-center">
           <div className="w-full max-w-[400px] md:max-w-[500px]">
@@ -110,6 +113,7 @@ const Signup = () => {
           />
         </div>
       </div>
+    </div>
     </div>
   );
 };

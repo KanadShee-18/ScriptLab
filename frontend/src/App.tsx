@@ -7,6 +7,7 @@ import OpenRoute from "./components/authenticate/OpenRoute";
 import PrivateRoute from "./components/authenticate/PrivateRoute";
 import BlogPost from "./pages/BlogPost";
 import { Publish } from "./pages/Publish";
+import { Home } from "./pages/Home";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<div> Home page of script lab to be made later</div>}
+            element={<Home/>}
           />
 
           <Route
