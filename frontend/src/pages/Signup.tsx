@@ -9,6 +9,8 @@ import { SignupInput } from "@kanad_shee/scriptlab-common";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 const Signup = () => {
   const navigate = useNavigate();
 
@@ -24,10 +26,7 @@ const Signup = () => {
   const sendSignUpRequest = async () => {
     setLoading(true);
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/api/v1/user/signup`,
-        postInputs
-      );
+      const response = await axios.post(`${BASE_URL}/user/signup`, postInputs);
       const jwt = response?.data?.jwt;
       localStorage.setItem("token", jwt);
       navigate("/blog");

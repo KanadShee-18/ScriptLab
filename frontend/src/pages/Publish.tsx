@@ -3,6 +3,9 @@ import { AppBar } from "../components/blogspot/AppBar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+
 interface PublishInputs {
   title: string;
   content: string;
@@ -34,7 +37,7 @@ export const Publish = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/api/v1/blog/createBlog`,
+        `${BASE_URL}/blog/createBlog`,
         publishInputs,
         {
           headers: {
