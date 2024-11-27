@@ -8,7 +8,7 @@ import { quoteText2 } from "../utils/constant";
 import { SignupInput } from "@kanad_shee/scriptlab-common";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import { BASE_URL } from "../hooks";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Signin = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        `${BASE_URL}/api/v1/user/signin`,
+        `${BASE_URL}/user/signin`,
         postInputs
       );
       const { jwt, userId, userName } = response?.data;
