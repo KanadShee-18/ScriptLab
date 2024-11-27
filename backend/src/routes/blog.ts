@@ -20,11 +20,7 @@ blogRouter.use("/*", async (c, next) => {
 
     const token = header.split(" ")[1];
 
-    console.log("Token comes in backend: ", token);
-
     const user = await verify(token, c.env.JWT_SECRET);
-
-    console.log("Authorized user: ", user);
 
     if (user.id) {
       c.set("userId", `${user.id}`);
@@ -108,7 +104,6 @@ blogRouter.get("/blog-insider/:id", async (c) => {
   try {
     // const body = await c.req.json();
     const blogId = c.req.param("id");
-    console.log("Blog id is: ", blogId);
 
     const prisma = new PrismaClient({
       datasourceUrl: c.env.DATABASE_URL,

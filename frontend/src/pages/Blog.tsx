@@ -16,7 +16,7 @@ const Blog = () => {
       const fetchedBlogs = await blogsOverview();
       setBlogs(fetchedBlogs);
     } catch (error) {
-      console.error("Error fetching blogs:", error);
+      // console.error("Error fetching blogs:", error);
     } finally {
       setLoading(false);
     }
@@ -36,7 +36,7 @@ const Blog = () => {
         setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog.id !== id));
       }
     } catch (error) {
-      console.error("Error deleting blog:", error);
+      // console.error("Error deleting blog:", error);
       alert("Failed to delete the blog. Please try again.");
     }
   };

@@ -33,7 +33,6 @@ const Signin = () => {
       setLoading(false);
       navigate("/blog");
     } catch (error: any) {
-      console.log("Error in signin", error);
 
       setErrMsg(error.response.data.message);
     }

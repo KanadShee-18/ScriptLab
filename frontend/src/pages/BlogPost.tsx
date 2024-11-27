@@ -8,7 +8,7 @@ const BlogPost = () => {
 
   const { blog, loading } = useSingleBlog({id});
 
-  console.log("The blog is: ", blog);
+  // console.log("The blog is: ", blog);
   
 
   return <div>

@@ -17,7 +17,7 @@ export const Publish = () => {
     content: "",
   });
 
-  console.log("Published inputs are: ", publishInputs);
+
 
   const handleOnChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -42,12 +42,12 @@ export const Publish = () => {
           },
         }
       );
-      console.log(response);
+     
       if(response?.data?.success){
         navigate("/blog");
       }
     } catch (error: any) {
-      console.log("Blog creating error: ", error);
+     
       alert(`${error.response.data.message}`)
     }
     setLoading(false);

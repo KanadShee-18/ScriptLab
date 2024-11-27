@@ -52,7 +52,7 @@ export const blogsOverview = async () => {
 
     return response.data?.data?.blogs || [];
   } catch (error) {
-    console.error("Error fetching blogs:", error);
+    // console.error("Error fetching blogs:", error);
     throw error;
   }
 };

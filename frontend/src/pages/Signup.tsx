@@ -32,7 +32,7 @@ const Signup = () => {
       localStorage.setItem("token", jwt);
       navigate("/blog");
     } catch (error: any) {
-      console.log("SIGN UP API ERROR: ", error);
+     
       setErrMsg(error.response.data.message);
     }
     setLoading(false);
