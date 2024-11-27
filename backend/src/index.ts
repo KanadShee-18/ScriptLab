@@ -11,12 +11,13 @@ export const app = new Hono<{
 }>();
 
 app.use(
-  "*",
+  "/api/v1/*",
   cors({
     origin: ["http://localhost:5173", "https://script-daily.vercel.app"],
     allowMethods: ["GET", "POST", "PUT", "DELETE"],
     allowHeaders: ["Content-Type", "Authorization"],
     maxAge: 600,
+    credentials: true,
   })
 );
 
