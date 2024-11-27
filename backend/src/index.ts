@@ -14,8 +14,9 @@ app.use(
   "/api/v1/*",
   cors({
     origin: ["http://localhost:5173", "https://script-daily.vercel.app"],
-    allowMethods: ["GET", "POST", "PUT", "DELETE"],
-    allowHeaders: ["Content-Type", "Authorization"],
+    allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowHeaders: ["Origin", "Content-Type", "Accept", "Authorization"],
+    exposeHeaders: ["Content-Length", "X-Kuma-Revision"],
     maxAge: 600,
     credentials: true,
   })
