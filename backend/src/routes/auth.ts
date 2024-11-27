@@ -125,7 +125,7 @@ authRouter.post("/signin", async (c) => {
 
     // Create JWT token
     const token = await sign({ id: user.id }, c.env.JWT_SECRET);
-    return c.json({ jwt: token });
+    return c.json({ jwt: token, userId: user.id, userName: user.name });
   } catch (error) {
     console.error("Signin error:", error);
     return c.json(

@@ -5,7 +5,8 @@ import Signin from "./pages/Signin";
 import Blog from "./pages/Blog";
 import OpenRoute from "./components/authenticate/OpenRoute";
 import PrivateRoute from "./components/authenticate/PrivateRoute";
-import BlogPost from "./components/blogspot/BlogPost";
+import BlogPost from "./pages/BlogPost";
+import { Publish } from "./pages/Publish";
 
 function App() {
   return (
@@ -50,6 +51,15 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route
+            path="/publish-blog"
+            element={
+              <PrivateRoute>
+                <Publish />
+              </PrivateRoute>
+            }
+          />
+          
         </Routes>
       </div>
     </>
