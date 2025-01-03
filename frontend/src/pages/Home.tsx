@@ -6,13 +6,14 @@ import { RiBloggerLine } from "react-icons/ri";
 import { GrLogin } from "react-icons/gr";
 import { FaSign } from "react-icons/fa";
 export const Home = () => {
- 
   return (
     <div>
-      <HomeNav/>
+      <HomeNav />
       <section className="relative py-16 mt-24 text-white bg-gradient-to-r from-slate-500 to-blue-900">
         <div className="max-w-screen-xl px-4 mx-auto text-center">
-          <h1 className="mb-4 text-4xl font-semibold">Welcome to YourApp</h1>
+          <h1 className="mb-4 text-4xl font-semibold">
+            Welcome to <span className="text-rose-600">ScriptLab</span>
+          </h1>
           <p className="mb-6 text-lg">
             Discover insightful blogs and stay updated with the latest trends.
           </p>
@@ -138,7 +139,7 @@ export const Home = () => {
 };
 
 export const HomeNav = () => {
-    const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
   return (
     <header className="fixed z-[100] top-0 w-screen py-4 bg-white shadow-md">
       <nav className="flex items-center justify-between max-w-screen-xl px-4 mx-auto">
